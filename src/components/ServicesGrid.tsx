@@ -11,24 +11,24 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService }) =
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'Sparkles':
-        return <Sparkles className="w-4 h-4 text-[#B9826B]" />;
+        return <Sparkles className="w-4 h-4 text-[#C0836B]" />;
       case 'Shirt':
-        return <Shirt className="w-4 h-4 text-[#B9826B]" />;
+        return <Shirt className="w-4 h-4 text-[#C0836B]" />;
       case 'Droplets':
-        return <Droplets className="w-4 h-4 text-[#B9826B]" />;
+        return <Droplets className="w-4 h-4 text-[#C0836B]" />;
       case 'Coffee':
-        return <Coffee className="w-4 h-4 text-[#B9826B]" />;
+        return <Coffee className="w-4 h-4 text-[#C0836B]" />;
       case 'Video':
-        return <Video className="w-4 h-4 text-[#B9826B]" />;
+        return <Video className="w-4 h-4 text-[#C0836B]" />;
       case 'Camera':
-        return <Camera className="w-4 h-4 text-[#B9826B]" />;
+        return <Camera className="w-4 h-4 text-[#C0836B]" />;
       default:
-        return <Sparkles className="w-4 h-4 text-[#B9826B]" />;
+        return <Sparkles className="w-4 h-4 text-[#C0836B]" />;
     }
   };
 
   return (
-    <section id="services" className="py-12 sm:py-16 lg:py-20 bg-[#FAF7F2]">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 bg-[#FAF6F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Services Grid (3 Columns) */}
@@ -37,11 +37,11 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService }) =
             <div
               key={service.id}
               onClick={() => onSelectService(service)}
-              className="group relative bg-[#F8F3ED] hover:bg-[#F3EAE2] rounded-3xl p-5 sm:p-6 border border-[#E8D7CA]/80 transition-all duration-300 hover:shadow-lg flex flex-col justify-between cursor-pointer"
+              className="group relative bg-[#F7EFE8] hover:bg-[#F2E5DC] rounded-3xl p-5 sm:p-6 border border-[#EADCCE]/90 transition-all duration-300 hover:shadow-lg flex flex-col justify-between cursor-pointer"
             >
               <div>
                 {/* Wide Photographic Image at the Top */}
-                <div className="rounded-2xl overflow-hidden aspect-[16/10] mb-5 bg-[#E8D7CA]/40 relative">
+                <div className="rounded-2xl overflow-hidden aspect-[16/10] mb-5 bg-[#EADCCE]/50 relative">
                   <img
                     src={service.image}
                     alt={service.title}
@@ -53,16 +53,16 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService }) =
 
                 {/* Category Icon Badge */}
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#E8D7CA] flex items-center justify-center shadow-xs">
+                  <div className="w-8 h-8 rounded-full bg-[#FAF6F0] border border-[#EADCCE] flex items-center justify-center shadow-xs">
                     {getIcon(service.icon)}
                   </div>
-                  <span className="text-[10px] uppercase tracking-widest font-semibold text-[#5A4035]/70">
+                  <span className="text-[10px] uppercase tracking-widest font-semibold text-[#5A4035]/75">
                     Content Service
                   </span>
                 </div>
 
                 {/* Service Title */}
-                <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#171513] mb-2.5 group-hover:text-[#B9826B] transition-colors">
+                <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#171513] mb-2.5 group-hover:text-[#C0836B] transition-colors">
                   {service.title}
                 </h3>
 
@@ -72,13 +72,13 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService }) =
                 </p>
               </div>
 
-              {/* Bottom Card Footer: Details Link & Small Circular Arrow Button */}
-              <div className="pt-4 border-t border-[#E8D7CA]/60 flex items-center justify-between">
-                <span className="text-xs font-medium text-[#5A4035]/80 group-hover:text-[#171513] transition-colors">
+              {/* Bottom Card Footer */}
+              <div className="pt-4 border-t border-[#EADCCE]/70 flex items-center justify-between">
+                <span className="text-xs font-medium text-[#5A4035]/85 group-hover:text-[#171513] transition-colors">
                   View deliverables
                 </span>
 
-                <div className="w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#E8D7CA] text-[#171513] flex items-center justify-center transition-all duration-300 group-hover:bg-[#171513] group-hover:text-[#FAF7F2] group-hover:border-[#171513]">
+                <div className="w-8 h-8 rounded-full bg-[#FAF6F0] border border-[#EADCCE] text-[#171513] flex items-center justify-center transition-all duration-300 group-hover:bg-[#171513] group-hover:text-[#FAF7F2] group-hover:border-[#171513]">
                   <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>

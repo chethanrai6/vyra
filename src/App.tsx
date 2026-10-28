@@ -44,25 +44,24 @@ export function App() {
   };
 
   const handleSelectIndustry = (industry: IndustryItem) => {
-    // Find matching service or open contact for this industry
     const match = SERVICES_LIST.find((s) => s.title.toLowerCase().includes(industry.title.toLowerCase().split(' ')[0])) || SERVICES_LIST[0];
     setSelectedService(match);
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#171513] flex flex-col font-sans selection:bg-[#B9826B]/20 selection:text-[#5A4035]">
+    <div className="min-h-screen bg-[#FAF6F0] text-[#171513] flex flex-col font-sans selection:bg-[#C0836B]/20 selection:text-[#5A4035]">
       
       {/* 1. Navigation */}
       <Navbar onOpenContact={() => handleOpenContact()} />
 
       <main className="flex-1">
-        {/* 2. Hero */}
+        {/* 2. Hero with Reference Design & Color Theme */}
         <Hero
-          onOpenContact={() => handleOpenContact()}
+          onOpenContact={(name) => handleOpenContact(name)}
           onViewWork={handleViewWork}
         />
 
-        {/* 3. Featured Content Strip directly below hero */}
+        {/* 3. Featured Content Strip */}
         <FeaturedStrip onSelectVideo={(video) => setSelectedVideo(video)} />
 
         {/* 4. What We Create */}
