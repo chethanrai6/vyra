@@ -12,19 +12,19 @@ export const LegalModal: React.FC<LegalModalProps> = ({ title, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
       <div
-        className="relative bg-[#FAF6F0] w-full max-w-xl rounded-3xl shadow-2xl border border-[#EADCCE] overflow-hidden text-left"
+        className="relative bg-[#FAF7F2] w-full max-w-xl rounded-3xl shadow-2xl border border-[#E8D7CA] overflow-hidden text-left"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-6 bg-[#F7EFE8] border-b border-[#EADCCE] flex items-center justify-between">
+        <div className="p-6 bg-[#F3EAE2] border-b border-[#E8D7CA] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <ShieldCheck className="w-5 h-5 text-[#C0836B]" />
+            <ShieldCheck className="w-5 h-5 text-[#B9826B]" />
             <h3 className="font-serif text-xl sm:text-2xl font-medium text-[#171513]">
               {title}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-[#FAF6F0] text-[#171513] hover:text-[#C0836B] flex items-center justify-center border border-[#EADCCE] cursor-pointer"
+            className="w-8 h-8 rounded-full bg-[#FAF7F2] text-[#171513] hover:text-[#B9826B] flex items-center justify-center border border-[#E8D7CA]"
           >
             <X className="w-4 h-4" />
           </button>
@@ -70,10 +70,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({ title, onClose }) => {
           )}
         </div>
 
-        <div className="p-4 bg-[#F7EFE8] border-t border-[#EADCCE] text-right">
+        <div className="p-4 bg-[#F3EAE2] border-t border-[#E8D7CA] text-right">
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-full bg-[#171513] text-xs font-medium text-[#FAF7F2] hover:bg-[#2A2320] cursor-pointer"
+            className="px-5 py-2 rounded-full bg-[#171513] text-xs font-medium text-[#FAF7F2] hover:bg-[#2A2320]"
           >
             I Understand
           </button>

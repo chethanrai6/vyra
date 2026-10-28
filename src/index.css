@@ -5,13 +5,12 @@
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-script: "Caveat", cursive;
 
-  --color-ivory: #FAF6F0;
-  --color-cream: #F7EFE8;
-  --color-beige: #EADCCE;
-  --color-champagne: #FBF0E6;
-  --color-terracotta: #C0836B;
-  --color-terracotta-dark: #A96E58;
-  --color-terracotta-light: #D49B85;
+  --color-ivory: #FAF7F2;
+  --color-cream: #F3EAE2;
+  --color-beige: #E8D7CA;
+  --color-terracotta: #B9826B;
+  --color-terracotta-dark: #A36B54;
+  --color-terracotta-light: #C99680;
   --color-deep-brown: #5A4035;
   --color-dark-banner: #322119;
   --color-near-black: #171513;
@@ -24,7 +23,7 @@
 
 body {
   margin: 0;
-  background-color: #FAF6F0;
+  background-color: #FAF7F2;
   color: #171513;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -44,14 +43,14 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF6F0;
+  background: #FAF7F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #EADCCE;
+  background: #E8D7CA;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C0836B;
+  background: #B9826B;
 }
 
 /* Handwritten script utility */
@@ -65,4 +64,15 @@ body {
 
 .font-sans {
   font-family: var(--font-sans);
+}
+
+/* Subtle image shimmer animation while loading */
+@keyframes shimmer {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite ease-in-out;
 }

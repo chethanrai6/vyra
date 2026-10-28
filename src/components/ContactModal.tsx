@@ -49,6 +49,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     if (!validate()) return;
 
     setIsSubmitting(true);
+    // Simulate real network submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -71,14 +72,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
       <div
-        className="relative bg-[#FAF6F0] w-full max-w-2xl rounded-3xl shadow-2xl border border-[#EADCCE] overflow-hidden text-left"
+        className="relative bg-[#FAF7F2] w-full max-w-2xl rounded-3xl shadow-2xl border border-[#E8D7CA] overflow-hidden text-left"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header */}
-        <div className="p-6 sm:p-8 bg-[#F7EFE8] border-b border-[#EADCCE] flex items-center justify-between">
+        <div className="p-6 sm:p-8 bg-[#F3EAE2] border-b border-[#E8D7CA] flex items-center justify-between">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs uppercase tracking-[0.24em] font-semibold text-[#C0836B]">
+              <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#B9826B]">
                 Let's Collaborate
               </span>
             </div>
@@ -92,7 +93,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
           <button
             onClick={onClose}
-            className="w-10 h-10 rounded-full bg-[#FAF6F0] text-[#171513] hover:text-[#C0836B] hover:bg-white flex items-center justify-center transition-colors border border-[#EADCCE] cursor-pointer"
+            className="w-10 h-10 rounded-full bg-[#FAF7F2] text-[#171513] hover:text-[#B9826B] hover:bg-white flex items-center justify-center transition-colors border border-[#E8D7CA]"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -103,8 +104,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
         <div className="p-6 sm:p-8">
           {isSubmitted ? (
             <div className="py-8 text-center">
-              <div className="w-16 h-16 bg-[#F7EFE8] text-[#C0836B] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#EADCCE]">
-                <CheckCircle className="w-8 h-8 text-[#C0836B]" />
+              <div className="w-16 h-16 bg-[#F3EAE2] text-[#B9826B] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#E8D7CA]">
+                <CheckCircle className="w-8 h-8 text-[#B9826B]" />
               </div>
               <h4 className="font-serif text-2xl font-semibold text-[#171513] mb-2">
                 Inquiry Received
@@ -113,7 +114,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 Thank you, <span className="font-semibold text-[#171513]">{formData.fullName}</span>! We’ve logged your request for <span className="font-semibold text-[#171513]">{formData.brandName}</span>. Our team will review your creative requirements and contact you at <span className="font-semibold text-[#171513]">{formData.email}</span>.
               </p>
 
-              <div className="p-4 rounded-xl bg-[#F7EFE8]/70 border border-[#EADCCE] text-xs text-[#5A4035] max-w-md mx-auto mb-6 text-left">
+              <div className="p-4 rounded-xl bg-[#F3EAE2]/70 border border-[#E8D7CA] text-xs text-[#5A4035] max-w-md mx-auto mb-6 text-left">
                 <span className="font-semibold text-[#171513] block mb-1">Backend Integration Note:</span>
                 This frontend form is fully validated and ready to connect to your preferred endpoint (e.g. Formspree, Resend, or your custom server).
               </div>
@@ -121,13 +122,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               <div className="flex justify-center gap-3">
                 <button
                   onClick={resetForm}
-                  className="px-5 py-2.5 rounded-full border border-[#EADCCE] text-xs font-medium text-[#171513] hover:bg-[#F7EFE8] cursor-pointer"
+                  className="px-5 py-2.5 rounded-full border border-[#E8D7CA] text-xs font-medium text-[#171513] hover:bg-[#F3EAE2]"
                 >
                   Send Another Inquiry
                 </button>
                 <button
                   onClick={onClose}
-                  className="px-6 py-2.5 rounded-full bg-[#171513] text-xs font-medium text-[#FAF7F2] hover:bg-[#2A2320] cursor-pointer"
+                  className="px-6 py-2.5 rounded-full bg-[#171513] text-xs font-medium text-[#FAF7F2] hover:bg-[#2A2320]"
                 >
                   Close
                 </button>
@@ -146,8 +147,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     placeholder="e.g. Sophia Loren"
                     className={`w-full px-4 py-2.5 rounded-xl bg-white border ${
-                      errors.fullName ? 'border-red-400' : 'border-[#EADCCE]'
-                    } focus:outline-none focus:ring-2 focus:ring-[#C0836B] text-sm text-[#171513]`}
+                      errors.fullName ? 'border-red-400' : 'border-[#E8D7CA]'
+                    } focus:outline-none focus:ring-2 focus:ring-[#B9826B] text-sm text-[#171513]`}
                   />
                   {errors.fullName && (
                     <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
@@ -166,8 +167,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
                     placeholder="e.g. Glow Botanics"
                     className={`w-full px-4 py-2.5 rounded-xl bg-white border ${
-                      errors.brandName ? 'border-red-400' : 'border-[#EADCCE]'
-                    } focus:outline-none focus:ring-2 focus:ring-[#C0836B] text-sm text-[#171513]`}
+                      errors.brandName ? 'border-red-400' : 'border-[#E8D7CA]'
+                    } focus:outline-none focus:ring-2 focus:ring-[#B9826B] text-sm text-[#171513]`}
                   />
                   {errors.brandName && (
                     <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
@@ -188,8 +189,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="sophia@brand.com"
                     className={`w-full px-4 py-2.5 rounded-xl bg-white border ${
-                      errors.email ? 'border-red-400' : 'border-[#EADCCE]'
-                    } focus:outline-none focus:ring-2 focus:ring-[#C0836B] text-sm text-[#171513]`}
+                      errors.email ? 'border-red-400' : 'border-[#E8D7CA]'
+                    } focus:outline-none focus:ring-2 focus:ring-[#B9826B] text-sm text-[#171513]`}
                   />
                   {errors.email && (
                     <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
@@ -205,7 +206,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   <select
                     value={formData.serviceInterest}
                     onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#EADCCE] focus:outline-none focus:ring-2 focus:ring-[#C0836B] text-sm text-[#171513]"
+                    className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#E8D7CA] focus:outline-none focus:ring-2 focus:ring-[#B9826B] text-sm text-[#171513]"
                   >
                     <option value="Skincare & Beauty">Skincare & Beauty</option>
                     <option value="Fashion & Styling">Fashion & Styling</option>
@@ -228,10 +229,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       type="button"
                       key={tier}
                       onClick={() => setFormData({ ...formData, budget: tier })}
-                      className={`py-2 px-3 rounded-lg text-xs font-medium border text-center transition-colors cursor-pointer ${
+                      className={`py-2 px-3 rounded-lg text-xs font-medium border text-center transition-colors ${
                         formData.budget === tier
                           ? 'bg-[#171513] text-[#FAF7F2] border-[#171513]'
-                          : 'bg-white text-[#5A4035] border-[#EADCCE] hover:bg-[#F7EFE8]'
+                          : 'bg-white text-[#5A4035] border-[#E8D7CA] hover:bg-[#F3EAE2]'
                       }`}
                     >
                       {tier}
@@ -250,8 +251,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Share a brief overview of your product, target launch date, or specific deliverables needed..."
                   className={`w-full px-4 py-2.5 rounded-xl bg-white border ${
-                    errors.message ? 'border-red-400' : 'border-[#EADCCE]'
-                  } focus:outline-none focus:ring-2 focus:ring-[#C0836B] text-sm text-[#171513]`}
+                    errors.message ? 'border-red-400' : 'border-[#E8D7CA]'
+                  } focus:outline-none focus:ring-2 focus:ring-[#B9826B] text-sm text-[#171513]`}
                 />
                 {errors.message && (
                   <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">

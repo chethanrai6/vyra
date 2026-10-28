@@ -9,13 +9,13 @@ interface IndustriesProps {
 
 export const Industries: React.FC<IndustriesProps> = ({ onSelectIndustry }) => {
   return (
-    <section id="industries" className="py-16 sm:py-20 lg:py-24 bg-[#FAF6F0]">
+    <section id="industries" className="py-16 sm:py-20 lg:py-24 bg-[#FAF7F2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header: Split Title & Description */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 sm:mb-14">
           <div className="lg:col-span-7 text-left">
-            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.24em] text-[#C0836B] block mb-3">
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-[#B9826B] block mb-3">
               Made For Brands Like Yours
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl lg:text-[50px] leading-[1.14] text-[#171513] font-medium">
@@ -37,7 +37,7 @@ export const Industries: React.FC<IndustriesProps> = ({ onSelectIndustry }) => {
             <div
               key={industry.id}
               onClick={() => onSelectIndustry(industry)}
-              className="group relative rounded-2xl overflow-hidden aspect-[3/4.2] shadow-xs hover:shadow-xl transition-all duration-300 border border-[#EADCCE]/80 bg-[#F7EFE8] cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden aspect-[3/4.2] shadow-sm hover:shadow-xl transition-all duration-300 border border-[#E8D7CA]/70 bg-[#F3EAE2] cursor-pointer"
             >
               {/* Background Photo */}
               <img
@@ -56,7 +56,7 @@ export const Industries: React.FC<IndustriesProps> = ({ onSelectIndustry }) => {
                   <h3 className="font-serif text-lg sm:text-xl font-medium text-[#FAF7F2] tracking-wide group-hover:text-white transition-colors">
                     {industry.title}
                   </h3>
-                  <p className="text-[11px] text-[#EADCCE]/90 font-sans tracking-wide mt-0.5">
+                  <p className="text-[11px] text-[#E8D7CA]/80 font-sans tracking-wide mt-0.5">
                     Tailored UGC Strategy
                   </p>
                 </div>
@@ -68,7 +68,7 @@ export const Industries: React.FC<IndustriesProps> = ({ onSelectIndustry }) => {
               </div>
 
               {/* Hover Highlight Ring */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#C0836B]/60 pointer-events-none transition-colors duration-300" />
+              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#B9826B]/50 pointer-events-none transition-colors duration-300" />
             </div>
           ))}
         </div>

@@ -9,16 +9,16 @@ interface FeaturedStripProps {
 
 export const FeaturedStrip: React.FC<FeaturedStripProps> = ({ onSelectVideo }) => {
   return (
-    <section id="work" className="py-8 sm:py-12 bg-[#FAF6F0]">
+    <section id="work" className="py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Strip Grid */}
+        {/* Strip Grid / Scroll Container */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
           {FEATURED_VIDEOS.map((item) => (
             <div
               key={item.id}
               onClick={() => onSelectVideo(item)}
-              className="group relative cursor-pointer rounded-2xl overflow-hidden aspect-[3/4.2] shadow-xs hover:shadow-xl transition-all duration-300 border border-[#EADCCE]/80 bg-[#F7EFE8]"
+              className="group relative cursor-pointer rounded-2xl overflow-hidden aspect-[3/4.2] shadow-sm hover:shadow-xl transition-all duration-300 border border-[#E8D7CA]/70 bg-[#F3EAE2]"
             >
               {/* Background Image */}
               <img
@@ -54,7 +54,7 @@ export const FeaturedStrip: React.FC<FeaturedStripProps> = ({ onSelectVideo }) =
               </div>
 
               {/* Hover Highlight Ring */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#C0836B]/60 pointer-events-none transition-colors duration-300" />
+              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#B9826B]/50 pointer-events-none transition-colors duration-300" />
             </div>
           ))}
         </div>
