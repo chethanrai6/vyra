@@ -12,6 +12,8 @@ import { ContactModal } from './components/ContactModal';
 import { VideoModal } from './components/VideoModal';
 import { ServiceModal } from './components/ServiceModal';
 import { LegalModal } from './components/LegalModal';
+import { ScrollProgress } from './components/ScrollProgress';
+import { CustomCursor } from './components/CustomCursor';
 import type { VideoItem, ServiceItem, IndustryItem } from './types';
 import { SERVICES_LIST } from './data/content';
 
@@ -44,14 +46,19 @@ export function App() {
   };
 
   const handleSelectIndustry = (industry: IndustryItem) => {
-    // Find matching service or open contact for this industry
     const match = SERVICES_LIST.find((s) => s.title.toLowerCase().includes(industry.title.toLowerCase().split(' ')[0])) || SERVICES_LIST[0];
     setSelectedService(match);
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#171513] flex flex-col font-sans selection:bg-[#B9826B]/20 selection:text-[#5A4035]">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#171513] flex flex-col font-sans selection:bg-[#B9826B]/20 selection:text-[#5A4035] relative">
       
+      {/* Scroll-driven Progress Indicator */}
+      <ScrollProgress />
+
+      {/* Editorial Luxury Cursor for Desktop */}
+      <CustomCursor />
+
       {/* 1. Navigation */}
       <Navbar onOpenContact={() => handleOpenContact()} />
 
@@ -87,7 +94,7 @@ export function App() {
         onOpenTerms={(title) => setLegalTitle(title)}
       />
 
-      {/* Interactive Modals */}
+      {/* Interactive Modals with Framer Motion AnimatePresence */}
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}

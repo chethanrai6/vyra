@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sparkles, Shirt, Droplets, Coffee, Video, Camera, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { SERVICES_LIST } from '../data/content';
 import type { ServiceItem } from '../types';
 
@@ -27,17 +28,46 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService }) =
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 35 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: 'easeOut' as const }
+    }
+  };
+
   return (
     <section id="services" className="py-12 sm:py-16 lg:py-20 bg-[#FAF7F2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Services Grid (3 Columns) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
+        {/* Services Grid (3 Columns) with Staggered Viewport Entrance */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8"
+        >
           {SERVICES_LIST.map((service) => (
-            <div
+            <motion.div
               key={service.id}
+              variants={cardVariants}
+              whileHover={{ y: -7 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => onSelectService(service)}
-              className="group relative bg-[#F8F3ED] hover:bg-[#F3EAE2] rounded-3xl p-5 sm:p-6 border border-[#E8D7CA]/80 transition-all duration-300 hover:shadow-lg flex flex-col justify-between cursor-pointer"
+              className="group relative bg-[#F8F3ED] hover:bg-[#F3EAE2] rounded-3xl p-5 sm:p-6 border border-[#E8D7CA]/80 transition-colors duration-300 shadow-xs hover:shadow-xl flex flex-col justify-between cursor-pointer"
             >
               <div>
                 {/* Wide Photographic Image at the Top */}
@@ -45,7 +75,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService }) =
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-106"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-[#171513]/5 group-hover:bg-transparent transition-colors duration-300" />
@@ -53,7 +83,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService }) =
 
                 {/* Category Icon Badge */}
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#E8D7CA] flex items-center justify-center shadow-xs">
+                  <div className="w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#E8D7CA] flex items-center justify-center shadow-xs transition-transform duration-300 group-hover:scale-110">
                     {getIcon(service.icon)}
                   </div>
                   <span className="text-[10px] uppercase tracking-widest font-semibold text-[#5A4035]/70">
@@ -82,9 +112,9 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService }) =
                   <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>

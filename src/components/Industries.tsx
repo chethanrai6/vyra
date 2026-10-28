@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { INDUSTRIES_LIST } from '../data/content';
 import type { IndustryItem } from '../types';
 
@@ -8,12 +9,38 @@ interface IndustriesProps {
 }
 
 export const Industries: React.FC<IndustriesProps> = ({ onSelectIndustry }) => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.15
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: 'easeOut' as const }
+    }
+  };
+
   return (
     <section id="industries" className="py-16 sm:py-20 lg:py-24 bg-[#FAF7F2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header: Split Title & Description */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 sm:mb-14">
+        {/* Section Header: Split Title & Description with Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.7 }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 sm:mb-14"
+        >
           <div className="lg:col-span-7 text-left">
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-[#B9826B] block mb-3">
               Made For Brands Like Yours
@@ -29,21 +56,30 @@ export const Industries: React.FC<IndustriesProps> = ({ onSelectIndustry }) => {
               We work with skincare, beauty, fashion, wellness and lifestyle brands to create content that fits their unique style, audience and goals.
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        {/* 4 Image Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        {/* 4 Image Cards with Staggered Entrance */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"
+        >
           {INDUSTRIES_LIST.map((industry) => (
-            <div
+            <motion.div
               key={industry.id}
+              variants={cardVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => onSelectIndustry(industry)}
-              className="group relative rounded-2xl overflow-hidden aspect-[3/4.2] shadow-sm hover:shadow-xl transition-all duration-300 border border-[#E8D7CA]/70 bg-[#F3EAE2] cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden aspect-[3/4.2] shadow-sm hover:shadow-2xl transition-all duration-300 border border-[#E8D7CA]/70 bg-[#F3EAE2] cursor-pointer"
             >
               {/* Background Photo */}
               <img
                 src={industry.image}
                 alt={industry.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
               />
 
@@ -63,15 +99,15 @@ export const Industries: React.FC<IndustriesProps> = ({ onSelectIndustry }) => {
 
                 {/* Circular Arrow Button */}
                 <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md text-[#FAF7F2] flex items-center justify-center shrink-0 border border-white/30 transition-all duration-300 group-hover:bg-[#FAF7F2] group-hover:text-[#171513] group-hover:scale-110">
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
 
               {/* Hover Highlight Ring */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#B9826B]/50 pointer-events-none transition-colors duration-300" />
-            </div>
+              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#B9826B]/60 pointer-events-none transition-colors duration-300" />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>
