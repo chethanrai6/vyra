@@ -1,8 +1,9 @@
 import React from 'react';
 import { ArrowRight, Play } from 'lucide-react';
+import { ProductScene3D } from './ProductScene3D';
 
 interface HeroProps {
-  onOpenContact: () => void;
+  onOpenContact: (serviceName?: string) => void;
   onViewWork: () => void;
 }
 
@@ -13,7 +14,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onViewWork }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* Left Column: Typography & CTAs */}
-          <div className="lg:col-span-7 flex flex-col justify-center text-left">
+          <div className="lg:col-span-6 flex flex-col justify-center text-left">
             
             {/* Small Top Tagline */}
             <div className="inline-flex items-center gap-2 mb-4 sm:mb-5">
@@ -37,7 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onViewWork }) => {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 mb-10 sm:mb-12">
               <button
-                onClick={onOpenContact}
+                onClick={() => onOpenContact()}
                 className="group inline-flex items-center gap-3 bg-[#171513] hover:bg-[#2A2320] text-[#FAF7F2] text-sm font-medium px-7 py-3.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
               >
                 <span>Work With Us</span>
@@ -72,45 +73,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onViewWork }) => {
 
           </div>
 
-          {/* Right Column: Hero Portrait Photograph with Handwritten Note */}
-          <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
+          {/* Right Column: Cinematic Blender-Style 3D Product Universe */}
+          <div className="lg:col-span-6 relative mt-6 lg:mt-0">
+            <div className="relative mx-auto max-w-lg lg:max-w-none">
               
-              {/* Subtle warm glow behind image */}
-              <div className="absolute -inset-4 bg-gradient-to-tr from-[#E8D7CA]/40 to-[#B9826B]/20 rounded-[2.5rem] filter blur-xl opacity-70 -z-10" />
+              {/* Subtle warm champagne glow behind 3D container */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-[#E8D7CA]/50 via-[#B9826B]/20 to-[#FAF5EE]/30 rounded-[3rem] filter blur-2xl opacity-75 -z-10" />
 
-              {/* Main Rounded Image Container */}
-              <div className="relative rounded-[2rem] overflow-hidden aspect-[4/5] sm:aspect-[3.8/5] shadow-[0_20px_50px_rgba(90,64,53,0.12)] border border-[#E8D7CA]/80 bg-[#F3EAE2]">
-                <img
-                  src="/images/hero-model.jpg"
-                  alt="Editorial UGC creator smiling with natural glowing skin in cream knit sweater"
-                  className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
-                  loading="eager"
-                />
-
-                {/* Subtle soft vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#171513]/30 via-transparent to-transparent pointer-events-none" />
-
-                {/* Handwritten Floating Script in Top Right */}
-                <div className="absolute top-6 right-6 sm:top-8 sm:right-8 text-right z-10 pointer-events-none select-none">
-                  <div className="font-script text-3xl sm:text-4xl text-[#FAF7F2] font-semibold leading-tight drop-shadow-[0_2px_8px_rgba(23,21,19,0.7)] rotate-[-4deg]">
-                    Authentic<br />
-                    Creative<br />
-                    <span className="text-[#FAF7F2] underline decoration-[#B9826B]/80 decoration-2 underline-offset-4">Impactful</span>
-                  </div>
-                </div>
-
-                {/* Small subtle creator watermark / studio badge */}
-                <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-10">
-                  <div className="bg-[#FAF7F2]/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#FAF7F2]/50 shadow-sm flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#B9826B] animate-pulse" />
-                    <span className="text-[11px] font-sans font-medium tracking-wide text-[#171513]">
-                      Editorial Quality UGC
-                    </span>
-                  </div>
-                </div>
-
-              </div>
+              {/* 3D Product Universe Component */}
+              <ProductScene3D
+                onProductClick={(productName) => onOpenContact(`${productName} UGC Campaign`)}
+              />
 
             </div>
           </div>
