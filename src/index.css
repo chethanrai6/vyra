@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Garamond, Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-script: "Caveat", cursive;
+
+  --color-ivory: #FAF7F2;
+  --color-cream: #F3EAE2;
+  --color-beige: #E8D7CA;
+  --color-terracotta: #B9826B;
+  --color-terracotta-dark: #A36B54;
+  --color-terracotta-light: #C99680;
+  --color-deep-brown: #5A4035;
+  --color-dark-banner: #322119;
+  --color-near-black: #171513;
+}
+
+:root {
+  color-scheme: light;
+  font-family: var(--font-sans);
+}
+
+body {
+  margin: 0;
+  background-color: #FAF7F2;
+  color: #171513;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #E8D7CA;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B9826B;
+}
+
+/* Handwritten script utility */
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Subtle image shimmer animation while loading */
+@keyframes shimmer {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite ease-in-out;
+}
